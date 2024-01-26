@@ -52,16 +52,8 @@ public partial class Plugin : EditorPlugin
 		RemoveCustomType<InputBindingVector2>();
 	}
 	
-	private void AddCustomType<TType, TBase>(string path = ".")
-	{
-		GD.Print($"Loading {typeof(TType).Name} under {typeof(TBase).Name}");
-		AddCustomType(typeof(TType).Name, typeof(TBase).Name, GD.Load<Script>($"res://addons/BoundInputSystem/{path}/{typeof(TType).Name}.cs"), null);
-	}
+	private void AddCustomType<TType, TBase>(string? path = null) => AddCustomType(typeof(TType).Name, typeof(TBase).Name, GD.Load<Script>($"res://addons/BoundInputSystem/{(path is null ? "" : path + "/")}{typeof(TType).Name}.cs"), null);
 	
-	private void RemoveCustomType<TType>()
-	{
-		GD.Print($"Unloading {typeof(TType).Name}");
-		RemoveCustomType(typeof(TType).Name);
-	}
+	private void RemoveCustomType<TType>() => RemoveCustomType(typeof(TType).Name);
 }
 #endif
