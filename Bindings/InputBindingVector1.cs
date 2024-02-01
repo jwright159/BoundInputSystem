@@ -17,12 +17,14 @@ public partial class InputBindingVector1 : InputBinding
 	public override bool IsMatch(InputEvent ev) => (PositiveBinding?.IsMatch(ev) ?? false) || (NegativeBinding?.IsMatch(ev) ?? false);
 	
 	public override float FloatValue => (PositiveBinding?.FloatValue ?? 0f) - (NegativeBinding?.FloatValue ?? 0f);
-
+	
+	public override double DoubleValue => (PositiveBinding?.DoubleValue ?? 0f) - (NegativeBinding?.DoubleValue ?? 0f);
+	
 	public override bool BoolValue => (PositiveBinding?.BoolValue ?? false) || (NegativeBinding?.BoolValue ?? false);
 	
-	public override Vector2 Vector2Value => new(){ X = FloatValue };
+	public override Vector2 Vector2Value => new(){ X = DoubleValue };
 	
-	public override Vector3 Vector3Value => new(){ X = FloatValue };
+	public override Vector3 Vector3Value => new(){ X = DoubleValue };
 	
 	public override bool WasPressedThisFrame => (PositiveBinding?.WasPressedThisFrame ?? false) || (NegativeBinding?.WasPressedThisFrame ?? false);
 	

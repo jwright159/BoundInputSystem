@@ -26,6 +26,7 @@ public abstract partial class InputBinding : Resource
 	public abstract bool IsMatch(InputEvent ev);
 	
 	public abstract float FloatValue { get; }
+	public abstract double DoubleValue { get; }
 	public abstract bool BoolValue { get; }
 	public abstract Vector2 Vector2Value { get; }
 	public abstract Vector3 Vector3Value { get; }

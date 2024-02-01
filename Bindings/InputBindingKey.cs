@@ -19,13 +19,15 @@ public partial class InputBindingKey : InputBinding
 	
 	public override bool IsMatch(InputEvent ev) => Event is not null && Event.IsMatch(ev, true) && Event.IsEcho() == ev.IsEcho();
 	
-	public override float FloatValue => isPressed ? 1f : 0f;
+	public override float FloatValue => isPressed ? 1 : 0;
+	
+	public override double DoubleValue => isPressed ? 1 : 0;
 	
 	public override bool BoolValue => isPressed;
 	
-	public override Vector2 Vector2Value => new(){ X = FloatValue };
+	public override Vector2 Vector2Value => new(){ X = DoubleValue };
 	
-	public override Vector3 Vector3Value => new(){ X = FloatValue };
+	public override Vector3 Vector3Value => new(){ X = DoubleValue };
 	
 	public override bool WasPressedThisFrame => isPressed && !wasPressed;
 	
